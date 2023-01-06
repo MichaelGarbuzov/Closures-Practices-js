@@ -4,9 +4,9 @@ function popup() {
   const emailInput = document.querySelector("#email");
   const ageInput = document.querySelector("#age");
   const modal = document.querySelector(".modal");
-  const nameSpan = document.querySelector("#modal-name");
-  const emailSpan = document.querySelector("#modal-email");
-  const ageSpan = document.querySelector("#modal-age");
+  const nameElement = document.querySelector("#modal-name");
+  const emailElement = document.querySelector("#modal-email");
+  const ageElement = document.querySelector("#modal-age");
 
   async function getGitHubProfile(username) {
     try {
@@ -44,9 +44,9 @@ function popup() {
   async function openModal() {
     const gitHubUsername = document.querySelector("#gitHubUsername").value;
     const gitHubProfile = await getGitHubProfile(gitHubUsername);
-    nameSpan.textContent = nameInput.value;
-    emailSpan.textContent = emailInput.value;
-    ageSpan.textContent = ageInput.value;
+    nameElement.textContent = nameInput.value;
+    emailElement.textContent = emailInput.value;
+    ageElement.textContent = ageInput.value;
     document.querySelector("#modal-avatar").src = gitHubProfile.avatar_url;
     modal.style.display = "block";
   }
