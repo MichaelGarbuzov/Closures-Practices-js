@@ -1,4 +1,4 @@
-const popup = (function () {
+function popup() {
   const form = document.querySelector("form");
   const nameInput = document.querySelector("#name");
   const emailInput = document.querySelector("#email");
@@ -73,4 +73,6 @@ const popup = (function () {
     openModal: openModal,
     closeModal: closeModal,
   };
-})();
+}
+
+const popupManager = popup();
