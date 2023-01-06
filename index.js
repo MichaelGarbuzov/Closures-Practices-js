@@ -8,6 +8,16 @@ const popup = (function () {
   const emailSpan = document.querySelector("#modal-email");
   const ageSpan = document.querySelector("#modal-age");
 
+  async function getGitHubProfile(username) {
+    try {
+      const response = await fetch(`https://api.github.com/users/${username}`);
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
   function isEmail(email) {
     return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
   }
@@ -16,6 +26,7 @@ const popup = (function () {
     const name = nameInput.value;
     const email = emailInput.value;
     const age = ageInput.value;
+    const gitHubUsername = document.querySelector("#gitHubUsername").value;
 
     if (name.length < 2) {
       alert("Name must be at least 2 characters long");
@@ -30,10 +41,13 @@ const popup = (function () {
     return true;
   }
 
-  function openModal() {
+  async function openModal() {
+    const gitHubUsername = document.querySelector("#gitHubUsername").value;
+    const gitHubProfile = await getGitHubProfile(gitHubUsername);
     nameSpan.textContent = nameInput.value;
     emailSpan.textContent = emailInput.value;
     ageSpan.textContent = ageInput.value;
+    document.querySelector("#modal-avatar").src = gitHubProfile.avatar_url;
     modal.style.display = "block";
   }
 
@@ -41,7 +55,7 @@ const popup = (function () {
     modal.style.display = "none";
   }
 
-  function handleFormSubmit(event) {
+  async function handleFormSubmit(event) {
     event.preventDefault();
     if (validateForm()) {
       openModal();

@@ -12,12 +12,14 @@
   <label for="email">Email:</label><br>
   <input type="text" id="email" name="email"><br>
   <label for="age">Age:</label><br>
-  <input type="number" id="age"  name="age" min="0" max="100"><br><br>
+  <input type="number" id="age"  name="age" min="0" max="100"><br>
+  <label for="gitHubUsername">GitHub username:</label><br>
+  <input type="text" id="gitHubUsername" name="gitHubUsername"><br><br>
   <input type="submit" value="Submit">
 </form> 
 <div class="modal">
   <div class="modal-content">
-    <img src="https://github.com/MichaelGarbuzov.png" alt="profile picture">
+    <img id="modal-avatar" src="" alt="profile picture">
     <p>Name: <span id="modal-name"></span></p>
     <p>Email: <span id="modal-email"></span></p>
     <p>Age: <span id="modal-age"></span></p>
